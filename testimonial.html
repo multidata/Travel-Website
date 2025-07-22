@@ -1,0 +1,362 @@
+<!-- Testimonials Component -->
+<section class="testimonials">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 text-center mb-5">
+                <h2 class="section-title">What Our Travelers Say</h2>
+                <p class="section-subtitle">Discover why thousands of travelers choose us for their adventures</p>
+            </div>
+        </div>
+
+        <!-- Testimonials Carousel -->
+        <div class="carousel testimonials-carousel" id="testimonialsCarousel">
+            <div class="carousel-inner">
+                <!-- Testimonial items will be dynamically loaded here -->
+            </div>
+
+            <!-- Carousel Controls -->
+            <button class="carousel-control prev" aria-label="Previous testimonial">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+            <button class="carousel-control next" aria-label="Next testimonial">
+                <i class="fas fa-chevron-right"></i>
+            </button>
+
+            <!-- Carousel Indicators -->
+            <div class="carousel-indicators">
+                <!-- Indicators will be dynamically added here -->
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Testimonial Item Template -->
+<template id="testimonialTemplate">
+    <div class="carousel-item">
+        <div class="row justify-content-center">
+            <div class="col-lg-8 col-md-10">
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <div class="testimonial-rating mb-3">
+                            <!-- Stars will be dynamically added here -->
+                        </div>
+                        <blockquote class="testimonial-text">
+                            <!-- Testimonial text will be inserted here -->
+                        </blockquote>
+                        <div class="testimonial-author">
+                            <img src="" alt="" class="testimonial-avatar">
+                            <div class="author-info">
+                                <h5 class="author-name"></h5>
+                                <p class="author-destination"></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>
+
+<!-- Testimonials JavaScript -->
+<script>
+// Load testimonials from JSON data
+async function loadTestimonials() {
+    try {
+        const response = await fetch('data/dummy.json');
+        const data = await response.json();
+        return data.testimonials;
+    } catch (error) {
+        console.error('Error loading testimonials:', error);
+        return getDefaultTestimonials();
+    }
+}
+
+// Default testimonials fallback
+function getDefaultTestimonials() {
+    return [
+        {
+            id: 1,
+            name: "Sarah Johnson",
+            avatar: "https://images.unsplash.com/photo-1494790108755-2616b612b786?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80",
+            rating: 5,
+            text: "Amazing experience! The travel package exceeded all my expectations. The guides were knowledgeable and the accommodations were perfect.",
+            destination: "Bali, Indonesia"
+        },
+        {
+            id: 2,
+            name: "Michael Chen",
+            avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80",
+            rating: 5,
+            text: "Best travel service I've ever used. Everything was perfectly organized and the customer support was exceptional.",
+            destination: "Tokyo, Japan"
+        },
+        {
+            id: 3,
+            name: "Emily Rodriguez",
+            avatar: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80",
+            rating: 4,
+            text: "Great value for money! The hotel was beautiful and the flight booking process was seamless.",
+            destination: "Paris, France"
+        }
+    ];
+}
+
+// Generate star rating HTML
+function generateStarRating(rating) {
+    let stars = '';
+    for (let i = 1; i <= 5; i++) {
+        if (i <= rating) {
+            stars += '<i class="fas fa-star text-warning"></i>';
+        } else {
+            stars += '<i class="far fa-star text-warning"></i>';
+        }
+    }
+    return stars;
+}
+
+// Create testimonial item
+function createTestimonialItem(testimonial) {
+    const template = document.getElementById('testimonialTemplate');
+    const clone = template.content.cloneNode(true);
+    
+    // Set testimonial content
+    clone.querySelector('.testimonial-rating').innerHTML = generateStarRating(testimonial.rating);
+    clone.querySelector('.testimonial-text').textContent = testimonial.text;
+    clone.querySelector('.testimonial-avatar').src = testimonial.avatar;
+    clone.querySelector('.testimonial-avatar').alt = testimonial.name;
+    clone.querySelector('.author-name').textContent = testimonial.name;
+    clone.querySelector('.author-destination').textContent = testimonial.destination;
+    
+    return clone;
+}
+
+// Initialize testimonials carousel
+function initializeTestimonialsCarousel() {
+    const carousel = document.getElementById('testimonialsCarousel');
+    if (!carousel) return;
+    
+    const carouselInner = carousel.querySelector('.carousel-inner');
+    const indicatorsContainer = carousel.querySelector('.carousel-indicators');
+    
+    loadTestimonials().then(testimonials => {
+        // Clear existing content
+        carouselInner.innerHTML = '';
+        if (indicatorsContainer) indicatorsContainer.innerHTML = '';
+        
+        // Add testimonial items
+        testimonials.forEach((testimonial, index) => {
+            const item = createTestimonialItem(testimonial);
+            carouselInner.appendChild(item);
+            
+            // Add indicator
+            if (indicatorsContainer) {
+                const indicator = document.createElement('button');
+                indicator.className = `carousel-indicator ${index === 0 ? 'active' : ''}`;
+                indicator.setAttribute('data-slide-to', index);
+                indicator.setAttribute('aria-label', `Go to slide ${index + 1}`);
+                indicatorsContainer.appendChild(indicator);
+            }
+        });
+        
+        // Initialize carousel functionality
+        initializeCarouselControls(carousel, testimonials.length);
+    });
+}
+
+// Initialize carousel controls
+function initializeCarouselControls(carousel, totalItems) {
+    const carouselInner = carousel.querySelector('.carousel-inner');
+    const prevBtn = carousel.querySelector('.carousel-control.prev');
+    const nextBtn = carousel.querySelector('.carousel-control.next');
+    const indicators = carousel.querySelectorAll('.carousel-indicator');
+    
+    let currentIndex = 0;
+    
+    function updateCarousel() {
+        carouselInner.style.transform = `translateX(-${currentIndex * 100}%)`;
+        
+        // Update indicators
+        indicators.forEach((indicator, index) => {
+            indicator.classList.toggle('active', index === currentIndex);
+        });
+    }
+    
+    function nextSlide() {
+        currentIndex = (currentIndex + 1) % totalItems;
+        updateCarousel();
+    }
+    
+    function prevSlide() {
+        currentIndex = (currentIndex - 1 + totalItems) % totalItems;
+        updateCarousel();
+    }
+    
+    function goToSlide(index) {
+        currentIndex = index;
+        updateCarousel();
+    }
+    
+    // Event listeners
+    if (nextBtn) nextBtn.addEventListener('click', nextSlide);
+    if (prevBtn) prevBtn.addEventListener('click', prevSlide);
+    
+    indicators.forEach((indicator, index) => {
+        indicator.addEventListener('click', () => goToSlide(index));
+    });
+    
+    // Auto-play
+    const autoPlayInterval = setInterval(nextSlide, 5000);
+    
+    // Pause auto-play on hover
+    carousel.addEventListener('mouseenter', () => clearInterval(autoPlayInterval));
+    carousel.addEventListener('mouseleave', () => setInterval(nextSlide, 5000));
+}
+
+// Initialize when DOM is loaded
+document.addEventListener('DOMContentLoaded', function() {
+    initializeTestimonialsCarousel();
+});
+</script>
+
+<!-- Additional Testimonials Styles -->
+<style>
+.testimonials-carousel {
+    position: relative;
+    overflow: hidden;
+    padding: 2rem 0;
+}
+
+.carousel-indicators {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-top: 2rem;
+}
+
+.carousel-indicator {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    border: none;
+    background: #d1d5db;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.carousel-indicator.active {
+    background: var(--primary-color);
+}
+
+.carousel-indicator:hover {
+    background: var(--primary-color);
+    transform: scale(1.2);
+}
+
+.testimonial-card {
+    background: white;
+    padding: 3rem 2rem;
+    border-radius: 1rem;
+    box-shadow: var(--shadow-md);
+    text-align: center;
+    margin: 1rem;
+    transition: var(--transition);
+    position: relative;
+}
+
+.testimonial-card::before {
+    content: '"';
+    position: absolute;
+    top: 1rem;
+    left: 2rem;
+    font-size: 4rem;
+    color: var(--primary-color);
+    opacity: 0.2;
+    font-family: serif;
+}
+
+.testimonial-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-lg);
+}
+
+.testimonial-rating {
+    font-size: 1.25rem;
+}
+
+.testimonial-text {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    margin-bottom: 2rem;
+    color: var(--text-secondary);
+    font-style: italic;
+}
+
+.testimonial-author {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.testimonial-avatar {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid var(--primary-color);
+}
+
+.author-info {
+    text-align: left;
+}
+
+.author-name {
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 0.25rem;
+}
+
+.author-destination {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    margin: 0;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .testimonial-card {
+        padding: 2rem 1.5rem;
+    }
+    
+    .testimonial-text {
+        font-size: 1rem;
+    }
+    
+    .testimonial-author {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .author-info {
+        text-align: center;
+    }
+}
+
+/* Dark mode adjustments */
+[data-theme="dark"] .testimonial-card {
+    background: #374151;
+    border: 1px solid #4b5563;
+}
+
+[data-theme="dark"] .testimonial-text {
+    color: #d1d5db;
+}
+
+[data-theme="dark"] .author-name {
+    color: #f9fafb;
+}
+
+[data-theme="dark"] .author-destination {
+    color: #9ca3af;
+}
+</style> 

@@ -1,0 +1,291 @@
+<!-- Chatbot Component -->
+<div class="chatbot">
+    <!-- Chatbot Toggle Button -->
+    <button class="chatbot-toggle" aria-label="Open chat">
+        <i class="fas fa-comments"></i>
+    </button>
+
+    <!-- Chatbot Window -->
+    <div class="chatbot-window">
+        <!-- Chatbot Header -->
+        <div class="chatbot-header">
+            <div class="d-flex align-items-center">
+                <i class="fas fa-robot me-2"></i>
+                <span>Travel Assistant</span>
+            </div>
+            <button class="btn-close btn-close-white" onclick="closeChatbot()" aria-label="Close chat"></button>
+        </div>
+
+        <!-- Chatbot Messages -->
+        <div class="chatbot-messages">
+            <!-- Messages will be dynamically added here -->
+        </div>
+
+        <!-- Chatbot Input -->
+        <div class="chatbot-input">
+            <input type="text" placeholder="Type your message..." aria-label="Chat message">
+            <button type="button" aria-label="Send message">
+                <i class="fas fa-paper-plane"></i>
+            </button>
+        </div>
+    </div>
+</div>
+
+<!-- Chatbot Styles -->
+<style>
+.chatbot-message {
+    margin-bottom: 1rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.user-message {
+    align-items: flex-end;
+}
+
+.bot-message {
+    align-items: flex-start;
+}
+
+.message-content {
+    max-width: 80%;
+    padding: 0.75rem 1rem;
+    border-radius: 1rem;
+    position: relative;
+}
+
+.user-message .message-content {
+    background: var(--primary-color);
+    color: white;
+    border-bottom-right-radius: 0.25rem;
+}
+
+.bot-message .message-content {
+    background: #f3f4f6;
+    color: var(--text-primary);
+    border-bottom-left-radius: 0.25rem;
+}
+
+.message-time {
+    font-size: 0.75rem;
+    opacity: 0.7;
+    margin-top: 0.25rem;
+    display: block;
+}
+
+.user-message .message-time {
+    text-align: right;
+}
+
+.bot-message .message-time {
+    text-align: left;
+}
+
+/* Quick Response Buttons */
+.quick-responses {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 1rem;
+}
+
+.quick-response-btn {
+    background: #e5e7eb;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 1rem;
+    font-size: 0.875rem;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.quick-response-btn:hover {
+    background: var(--primary-color);
+    color: white;
+}
+
+/* Typing Indicator */
+.typing-indicator {
+    display: flex;
+    align-items: center;
+    padding: 0.75rem 1rem;
+    background: #f3f4f6;
+    border-radius: 1rem;
+    border-bottom-left-radius: 0.25rem;
+    margin-bottom: 1rem;
+}
+
+.typing-dots {
+    display: flex;
+    gap: 0.25rem;
+}
+
+.typing-dot {
+    width: 8px;
+    height: 8px;
+    background: #9ca3af;
+    border-radius: 50%;
+    animation: typing 1.4s infinite ease-in-out;
+}
+
+.typing-dot:nth-child(1) { animation-delay: -0.32s; }
+.typing-dot:nth-child(2) { animation-delay: -0.16s; }
+
+@keyframes typing {
+    0%, 80%, 100% {
+        transform: scale(0.8);
+        opacity: 0.5;
+    }
+    40% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+/* Dark mode adjustments */
+[data-theme="dark"] .bot-message .message-content {
+    background: #374151;
+    color: var(--text-primary);
+}
+
+[data-theme="dark"] .quick-response-btn {
+    background: #4b5563;
+    color: var(--text-primary);
+}
+
+[data-theme="dark"] .quick-response-btn:hover {
+    background: var(--primary-color);
+    color: white;
+}
+
+[data-theme="dark"] .typing-indicator {
+    background: #374151;
+}
+
+[data-theme="dark"] .typing-dot {
+    background: #9ca3af;
+}
+</style>
+
+<!-- Chatbot JavaScript -->
+<script>
+// Close chatbot function
+function closeChatbot() {
+    const chatbotWindow = document.querySelector('.chatbot-window');
+    const chatbotToggle = document.querySelector('.chatbot-toggle');
+    
+    if (chatbotWindow && chatbotToggle) {
+        chatbotWindow.classList.remove('active');
+        chatbotOpen = false;
+    }
+}
+
+// Add quick response buttons
+function addQuickResponses() {
+    const chatbotMessages = document.querySelector('.chatbot-messages');
+    if (!chatbotMessages) return;
+    
+    const quickResponses = document.createElement('div');
+    quickResponses.className = 'quick-responses';
+    quickResponses.innerHTML = `
+        <button class="quick-response-btn" onclick="sendQuickResponse('Flight booking')">Flight booking</button>
+        <button class="quick-response-btn" onclick="sendQuickResponse('Hotel reservation')">Hotel reservation</button>
+        <button class="quick-response-btn" onclick="sendQuickResponse('Travel packages')">Travel packages</button>
+        <button class="quick-response-btn" onclick="sendQuickResponse('Contact support')">Contact support</button>
+    `;
+    
+    chatbotMessages.appendChild(quickResponses);
+}
+
+// Send quick response
+function sendQuickResponse(message) {
+    const chatbotInput = document.querySelector('.chatbot-input input');
+    if (chatbotInput) {
+        chatbotInput.value = message;
+        // Trigger the send function
+        const sendButton = document.querySelector('.chatbot-input button');
+        if (sendButton) {
+            sendButton.click();
+        }
+    }
+}
+
+// Show typing indicator
+function showTypingIndicator() {
+    const chatbotMessages = document.querySelector('.chatbot-messages');
+    if (!chatbotMessages) return;
+    
+    const typingIndicator = document.createElement('div');
+    typingIndicator.className = 'typing-indicator';
+    typingIndicator.innerHTML = `
+        <div class="typing-dots">
+            <div class="typing-dot"></div>
+            <div class="typing-dot"></div>
+            <div class="typing-dot"></div>
+        </div>
+    `;
+    
+    chatbotMessages.appendChild(typingIndicator);
+    chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+    
+    return typingIndicator;
+}
+
+// Remove typing indicator
+function removeTypingIndicator(indicator) {
+    if (indicator && indicator.parentNode) {
+        indicator.remove();
+    }
+}
+
+// Enhanced chatbot response function
+function generateEnhancedResponse(userMessage) {
+    const message = userMessage.toLowerCase();
+    
+    // Flight enquiries
+    if (message.includes('flight') || message.includes('airline') || message.includes('booking')) {
+        return {
+            text: 'I can help you with flight bookings! Here are your options:\n\n• Search flights on our Flights page\n• Call our booking hotline: +1-800-TRAVEL\n• Use our mobile app for instant booking\n\nWould you like me to help you find the best deals?',
+            quickResponses: ['Search flights', 'Best deals', 'Booking help']
+        };
+    }
+    
+    // Hotel enquiries
+    if (message.includes('hotel') || message.includes('accommodation') || message.includes('room')) {
+        return {
+            text: 'For hotel bookings, we have partnerships with top hotels worldwide! Here\'s what I can help with:\n\n• Luxury resorts and boutique hotels\n• Budget-friendly accommodations\n• All-inclusive packages\n• Special group rates\n\nCheck our Hotels page for the best options!',
+            quickResponses: ['Luxury hotels', 'Budget options', 'All-inclusive']
+        };
+    }
+    
+    // Timing queries
+    if (message.includes('time') || message.includes('schedule') || message.includes('departure')) {
+        return {
+            text: 'For real-time schedules and timing information:\n\n• Visit our Flights/Trains/Buses pages\n• Use our live tracking feature\n• Contact our support team\n• Check our mobile app for updates\n\nI can also help you set up travel alerts!',
+            quickResponses: ['Live tracking', 'Travel alerts', 'Support contact']
+        };
+    }
+    
+    // General travel info
+    if (message.includes('travel') || message.includes('destination') || message.includes('package')) {
+        return {
+            text: 'We offer amazing travel packages! Here\'s what\'s popular:\n\n• Beach getaways in Bali and Santorini\n• City breaks in Tokyo and Paris\n• Adventure tours to Machu Picchu\n• Cultural experiences in Japan\n\nAll packages include expert guides and premium accommodations!',
+            quickResponses: ['Beach packages', 'City breaks', 'Adventure tours']
+        };
+    }
+    
+    // Support queries
+    if (message.includes('help') || message.includes('support') || message.includes('contact')) {
+        return {
+            text: 'I\'m here to help! Here are your support options:\n\n• Call us: +1-800-TRAVEL\n• Email: support@travelwebsite.com\n• Live chat with human agent\n• FAQ section for quick answers\n\nWhat specific help do you need?',
+            quickResponses: ['Call support', 'Email support', 'FAQ']
+        };
+    }
+    
+    // Default response
+    return {
+        text: 'Thank you for your message! I\'m here to help with:\n\n• Flight and hotel bookings\n• Travel packages and tours\n• Schedule and timing information\n• General travel advice\n\nFor detailed assistance, contact our live agent or visit our website!',
+        quickResponses: ['Flight booking', 'Hotel booking', 'Travel packages']
+    };
+}
+</script> 
