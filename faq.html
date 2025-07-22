@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ & Support - TravelWorld</title>
+    <meta name="description" content="Find answers to frequently asked questions about travel bookings, policies, and support. Get help with your travel planning.">
+    <meta name="keywords" content="FAQ, support, help, travel questions, booking help">
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../assets/css/style.css">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="../assets/images/favicon.ico">
+</head>
+<body>
+    <!-- Loading Animation -->
+    <div class="loading">
+        <div class="spinner"></div>
+    </div>
+
+    <!-- Header -->
+    <div id="header-placeholder"></div>
+
+    <!-- Page Header -->
+    <section class="page-header bg-primary text-white py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center">
+                    <h1 class="display-4">FAQ & Support</h1>
+                    <p class="lead">Find answers to your questions and get the help you need</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Search Section -->
+    <section class="search-section py-4 bg-light">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="search-box">
+                        <input type="text" class="form-control search-input" placeholder="Search for answers..." data-target=".faq-item">
+                        <i class="fas fa-search search-icon"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Categories -->
+    <section class="faq-categories py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center mb-5">
+                    <h2 class="section-title">Browse by Category</h2>
+                    <p class="section-subtitle">Find answers organized by topic</p>
+                </div>
+            </div>
+            
+            <div class="row g-4">
+                <div class="col-lg-3 col-md-6">
+                    <div class="category-card text-center" data-category="booking">
+                        <div class="category-icon mb-3">
+                            <i class="fas fa-calendar-check"></i>
+                        </div>
+                        <h5>Booking</h5>
+                        <p>Questions about making reservations and bookings</p>
+                    </div>
+                </div>
+                
+                <div class="col-lg-3 col-md-6">
+                    <div class="category-card text-center" data-category="payment">
+                        <div class="category-icon mb-3">
+                            <i class="fas fa-credit-card"></i>
+                        </div>
+                        <h5>Payment</h5>
+                        <p>Payment methods, refunds, and billing questions</p>
+                    </div>
+                </div>
+                
+                <div class="col-lg-3 col-md-6">
+                    <div class="category-card text-center" data-category="travel">
+                        <div class="category-icon mb-3">
+                            <i class="fas fa-plane"></i>
+                        </div>
+                        <h5>Travel</h5>
+                        <p>Travel preparation and documentation</p>
+                    </div>
+                </div>
+                
+                <div class="col-lg-3 col-md-6">
+                    <div class="category-card text-center" data-category="support">
+                        <div class="category-icon mb-3">
+                            <i class="fas fa-headset"></i>
+                        </div>
+                        <h5>Support</h5>
+                        <p>How to get help and contact information</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Content -->
+    <section class="faq-content py-5 bg-light">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <h3 class="mb-4">Frequently Asked Questions</h3>
+                    
+                    <!-- Booking Questions -->
+                    <div class="faq-section mb-5">
+                        <h4 class="faq-category-title">Booking Questions</h4>
+                        <div class="accordion" id="bookingAccordion">
+                            <div class="accordion-item faq-item" data-category="booking">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#booking1">
+                                        How do I book a flight through TravelWorld?
+                                    </button>
+                                </h2>
+                                <div id="booking1" class="accordion-collapse collapse show" data-bs-parent="#bookingAccordion">
+                                    <div class="accordion-body">
+                                        You can book flights through our website by selecting your destination, dates, and preferred airline. Our booking system will show you the best available options and prices. You can also call our booking hotline at +1-800-TRAVEL for assistance.
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="accordion-item faq-item" data-category="booking">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#booking2">
+                                        Can I modify my booking after confirmation?
+                                    </button>
+                                </h2>
+                                <div id="booking2" class="accordion-collapse collapse" data-bs-parent="#bookingAccordion">
+                                    <div class="accordion-body">
+                                        Yes, most bookings can be modified up to 24 hours before departure, subject to availability and any applicable change fees. Contact our customer support team for assistance with modifications.
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="accordion-item faq-item" data-category="booking">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#booking3">
+                                        How far in advance should I book my trip?
+                                    </button>
+                                </h2>
+                                <div id="booking3" class="accordion-collapse collapse" data-bs-parent="#bookingAccordion">
+                                    <div class="accordion-body">
+                                        For international flights, we recommend booking 2-3 months in advance for the best prices. For domestic flights, 1-2 months is usually sufficient. Peak travel seasons may require earlier booking.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Payment Questions -->
+                    <div class="faq-section mb-5">
+                        <h4 class="faq-category-title">Payment Questions</h4>
+                        <div class="accordion" id="paymentAccordion">
+                            <div class="accordion-item faq-item" data-category="payment">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#payment1">
+                                        What payment methods do you accept?
+                                    </button>
+                                </h2>
+                                <div id="payment1" class="accordion-collapse collapse show" data-bs-parent="#paymentAccordion">
+                                    <div class="accordion-body">
+                                        We accept all major credit cards (Visa, MasterCard, American Express), debit cards, and PayPal. We also offer installment payment plans for certain packages.
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="accordion-item faq-item" data-category="payment">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#payment2">
+                                        What is your cancellation policy?
+                                    </button>
+                                </h2>
+                                <div id="payment2" class="accordion-collapse collapse" data-bs-parent="#paymentAccordion">
+                                    <div class="accordion-body">
+                                        Our cancellation policy varies by booking type. Most bookings can be cancelled up to 24 hours before departure for a full refund, minus any processing fees. Some non-refundable tickets may have different terms.
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="accordion-item faq-item" data-category="payment">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#payment3">
+                                        How long does it take to process refunds?
+                                    </button>
+                                </h2>
+                                <div id="payment3" class="accordion-collapse collapse" data-bs-parent="#paymentAccordion">
+                                    <div class="accordion-body">
+                                        Refunds are typically processed within 7-10 business days. The time may vary depending on your bank or credit card provider. You'll receive an email confirmation once the refund is processed.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Travel Questions -->
+                    <div class="faq-section mb-5">
+                        <h4 class="faq-category-title">Travel Questions</h4>
+                        <div class="accordion" id="travelAccordion">
+                            <div class="accordion-item faq-item" data-category="travel">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#travel1">
+                                        What documents do I need for international travel?
+                                    </button>
+                                </h2>
+                                <div id="travel1" class="accordion-collapse collapse show" data-bs-parent="#travelAccordion">
+                                    <div class="accordion-body">
+                                        For international travel, you'll need a valid passport and may require visas depending on your destination. We recommend checking with the embassy of your destination country for specific requirements.
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="accordion-item faq-item" data-category="travel">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#travel2">
+                                        Do you offer travel insurance?
+                                    </button>
+                                </h2>
+                                <div id="travel2" class="accordion-collapse collapse" data-bs-parent="#travelAccordion">
+                                    <div class="accordion-body">
+                                        Yes, we offer comprehensive travel insurance packages that cover medical emergencies, trip cancellations, lost luggage, and more. You can add insurance during the booking process.
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="accordion-item faq-item" data-category="travel">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#travel3">
+                                        What should I do if my flight is delayed or cancelled?
+                                    </button>
+                                </h2>
+                                <div id="travel3" class="accordion-collapse collapse" data-bs-parent="#travelAccordion">
+                                    <div class="accordion-body">
+                                        If your flight is delayed or cancelled, contact our 24/7 support team immediately. We'll help you rebook or find alternative arrangements. Keep all receipts for any additional expenses.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Support Questions -->
+                    <div class="faq-section mb-5">
+                        <h4 class="faq-category-title">Support Questions</h4>
+                        <div class="accordion" id="supportAccordion">
+                            <div class="accordion-item faq-item" data-category="support">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#support1">
+                                        How can I contact customer support?
+                                    </button>
+                                </h2>
+                                <div id="support1" class="accordion-collapse collapse show" data-bs-parent="#supportAccordion">
+                                    <div class="accordion-body">
+                                        You can reach our customer support team via phone at +1-800-TRAVEL, email at support@travelwebsite.com, or through our live chat feature available on all pages.
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="accordion-item faq-item" data-category="support">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#support2">
+                                        What are your business hours?
+                                    </button>
+                                </h2>
+                                <div id="support2" class="accordion-collapse collapse" data-bs-parent="#supportAccordion">
+                                    <div class="accordion-body">
+                                        Our customer support is available 24/7 for urgent matters. Our main office hours are Monday-Friday 9AM-6PM EST, and Saturday 10AM-4PM EST.
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="accordion-item faq-item" data-category="support">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#support3">
+                                        Can I get help in languages other than English?
+                                    </button>
+                                </h2>
+                                <div id="support3" class="accordion-collapse collapse" data-bs-parent="#supportAccordion">
+                                    <div class="accordion-body">
+                                        Yes, we offer support in multiple languages including Spanish, French, German, and Mandarin. Please let us know your preferred language when contacting us.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Still Need Help -->
+    <section class="help-section py-5">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8 text-center">
+                    <h3 class="mb-4">Still Need Help?</h3>
+                    <p class="mb-4">Can't find the answer you're looking for? Our support team is here to help you.</p>
+                    <div class="help-buttons">
+                        <a href="contact.html" class="btn btn-primary btn-lg me-3">
+                            <i class="fas fa-envelope"></i> Contact Support
+                        </a>
+                        <a href="tel:+1-800-TRAVEL" class="btn btn-outline-primary btn-lg">
+                            <i class="fas fa-phone"></i> Call Us
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <div id="footer-placeholder"></div>
+
+    <!-- Chatbot -->
+    <div id="chatbot-placeholder"></div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Custom JS -->
+    <script src="../assets/js/main.js"></script>
+    
+    <!-- Page Specific JS -->
+    <script>
+        // Load components
+        document.addEventListener('DOMContentLoaded', function() {
+            // Load header
+            fetch('../components/header.html')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('header-placeholder').innerHTML = data;
+                });
+            
+            // Load footer
+            fetch('../components/footer.html')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('footer-placeholder').innerHTML = data;
+                });
+            
+            // Load chatbot
+            fetch('../components/chatbot.html')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('chatbot-placeholder').innerHTML = data;
+                });
+        });
+
+        // FAQ Search functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const searchInput = document.querySelector('.search-input');
+            const faqItems = document.querySelectorAll('.faq-item');
+            
+            if (searchInput) {
+                searchInput.addEventListener('input', function() {
+                    const query = this.value.toLowerCase();
+                    
+                    faqItems.forEach(item => {
+                        const question = item.querySelector('.accordion-button').textContent.toLowerCase();
+                        const answer = item.querySelector('.accordion-body').textContent.toLowerCase();
+                        const isVisible = question.includes(query) || answer.includes(query);
+                        
+                        item.style.display = isVisible ? 'block' : 'none';
+                    });
+                });
+            }
+        });
+
+        // Category filtering
+        document.addEventListener('DOMContentLoaded', function() {
+            const categoryCards = document.querySelectorAll('.category-card');
+            const faqItems = document.querySelectorAll('.faq-item');
+            
+            categoryCards.forEach(card => {
+                card.addEventListener('click', function() {
+                    const category = this.getAttribute('data-category');
+                    
+                    // Remove active class from all cards
+                    categoryCards.forEach(c => c.classList.remove('active'));
+                    
+                    // Add active class to clicked card
+                    this.classList.add('active');
+                    
+                    // Filter FAQ items
+                    faqItems.forEach(item => {
+                        const itemCategory = item.getAttribute('data-category');
+                        const isVisible = category === 'all' || itemCategory === category;
+                        item.style.display = isVisible ? 'block' : 'none';
+                    });
+                });
+            });
+        });
+    </script>
+
+    <!-- Additional Styles -->
+    <style>
+        .page-header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+        }
+
+        .search-box {
+            position: relative;
+        }
+
+        .search-icon {
+            position: absolute;
+            right: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-secondary);
+        }
+
+        .category-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 1rem;
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+            cursor: pointer;
+            height: 100%;
+        }
+
+        .category-card:hover,
+        .category-card.active {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+            background: var(--primary-color);
+            color: white;
+        }
+
+        .category-card.active .category-icon {
+            color: white;
+        }
+
+        .category-icon {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            transition: var(--transition);
+        }
+
+        .faq-category-title {
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--primary-color);
+        }
+
+        .accordion-item {
+            border: 1px solid var(--border-color);
+            margin-bottom: 1rem;
+            border-radius: 0.5rem;
+        }
+
+        .accordion-button {
+            background: white;
+            border: none;
+            padding: 1.5rem;
+            font-weight: 600;
+        }
+
+        .accordion-button:not(.collapsed) {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        .accordion-button:focus {
+            box-shadow: none;
+        }
+
+        .help-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        /* Dark mode adjustments */
+        [data-theme="dark"] .category-card {
+            background: #374151;
+            border: 1px solid #4b5563;
+        }
+
+        [data-theme="dark"] .bg-light {
+            background-color: #1f2937 !important;
+        }
+
+        [data-theme="dark"] .accordion-button {
+            background: #374151;
+            color: var(--text-primary);
+        }
+
+        [data-theme="dark"] .accordion-button:not(.collapsed) {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        [data-theme="dark"] .accordion-item {
+            border-color: #4b5563;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .help-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .category-card {
+                margin-bottom: 1rem;
+            }
+        }
+    </style>
+</body>
+</html> 

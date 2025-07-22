@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Travel Packages - TravelWorld</title>
+    <meta name="description" content="Discover amazing travel packages and tours. All-inclusive vacations with flights, hotels, and activities included.">
+    <meta name="keywords" content="travel packages, tours, vacation packages, all-inclusive, travel deals">
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../assets/css/style.css">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="../assets/images/favicon.ico">
+</head>
+<body>
+    <!-- Loading Animation -->
+    <div class="loading">
+        <div class="spinner"></div>
+    </div>
+
+    <!-- Header -->
+    <div id="header-placeholder"></div>
+
+    <!-- Page Header -->
+    <section class="page-header bg-primary text-white py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center">
+                    <h1 class="display-4">Travel Packages</h1>
+                    <p class="lead">All-inclusive packages for unforgettable adventures</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Package Search & Filter -->
+    <section class="package-search py-5 bg-light">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-10">
+                    <div class="search-card">
+                        <h3 class="mb-4">Find Your Perfect Package</h3>
+                        <form id="packageSearchForm">
+                            <div class="row g-3">
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label class="form-label">Destination</label>
+                                        <input type="text" class="form-control" placeholder="Where do you want to go?">
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label class="form-label">Duration</label>
+                                        <select class="form-control">
+                                            <option>Any Duration</option>
+                                            <option>1-3 days</option>
+                                            <option>4-7 days</option>
+                                            <option>8-14 days</option>
+                                            <option>15+ days</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label class="form-label">Price Range</label>
+                                        <select class="form-control">
+                                            <option>Any Price</option>
+                                            <option>$0 - $1000</option>
+                                            <option>$1000 - $3000</option>
+                                            <option>$3000 - $5000</option>
+                                            <option>$5000+</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <div class="form-group">
+                                        <label class="form-label">&nbsp;</label>
+                                        <button type="submit" class="btn btn-primary w-100">
+                                            <i class="fas fa-search"></i> Search
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Filter Buttons -->
+            <div class="row mt-4">
+                <div class="col-12">
+                    <div class="filter-buttons text-center">
+                        <button class="btn btn-outline-primary filter-btn active" data-filter="all" data-target="#packagesContainer">All Packages</button>
+                        <button class="btn btn-outline-primary filter-btn" data-filter="luxury" data-target="#packagesContainer">Luxury</button>
+                        <button class="btn btn-outline-primary filter-btn" data-filter="cultural" data-target="#packagesContainer">Cultural</button>
+                        <button class="btn btn-outline-primary filter-btn" data-filter="adventure" data-target="#packagesContainer">Adventure</button>
+                        <button class="btn btn-outline-primary filter-btn" data-filter="beach" data-target="#packagesContainer">Beach</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Package Results -->
+    <section class="package-results py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <h3 class="mb-4">Available Packages</h3>
+                    <div id="packagesContainer">
+                        <!-- Package results will be loaded dynamically -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Packages -->
+    <section class="featured-packages py-5 bg-light">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center mb-5">
+                    <h2 class="section-title">Featured Packages</h2>
+                    <p class="section-subtitle">Our most popular and highly-rated travel experiences</p>
+                </div>
+            </div>
+            
+            <div class="row g-4">
+                <div class="col-lg-6">
+                    <div class="featured-package-card">
+                        <img src="https://images.unsplash.com/photo-1537953773345-d172ccf13cf1?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Bali Paradise" class="package-image">
+                        <div class="package-overlay">
+                            <div class="package-content">
+                                <h4>Bali Paradise Package</h4>
+                                <p class="package-description">Ultimate luxury experience in Bali with premium accommodations and exclusive activities.</p>
+                                <div class="package-meta">
+                                    <span class="badge bg-primary">Luxury</span>
+                                    <span class="duration"><i class="fas fa-clock me-1"></i>10 days</span>
+                                    <span class="price">From $2,500</span>
+                                </div>
+                                <div class="package-inclusions">
+                                    <h6>Inclusions:</h6>
+                                    <ul class="list-unstyled">
+                                        <li><i class="fas fa-check text-success me-2"></i>5-star hotel</li>
+                                        <li><i class="fas fa-check text-success me-2"></i>Private guide</li>
+                                        <li><i class="fas fa-check text-success me-2"></i>All meals</li>
+                                        <li><i class="fas fa-check text-success me-2"></i>Spa treatments</li>
+                                    </ul>
+                                </div>
+                                <button class="btn btn-primary">View Details</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-6">
+                    <div class="featured-package-card">
+                        <img src="https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Japan Cultural" class="package-image">
+                        <div class="package-overlay">
+                            <div class="package-content">
+                                <h4>Japan Cultural Immersion</h4>
+                                <p class="package-description">Deep dive into Japanese culture with traditional experiences and modern city life.</p>
+                                <div class="package-meta">
+                                    <span class="badge bg-success">Cultural</span>
+                                    <span class="duration"><i class="fas fa-clock me-1"></i>12 days</span>
+                                    <span class="price">From $3,200</span>
+                                </div>
+                                <div class="package-inclusions">
+                                    <h6>Inclusions:</h6>
+                                    <ul class="list-unstyled">
+                                        <li><i class="fas fa-check text-success me-2"></i>Traditional ryokan</li>
+                                        <li><i class="fas fa-check text-success me-2"></i>Tea ceremony</li>
+                                        <li><i class="fas fa-check text-success me-2"></i>Sushi workshop</li>
+                                        <li><i class="fas fa-check text-success me-2"></i>Bullet train passes</li>
+                                    </ul>
+                                </div>
+                                <button class="btn btn-primary">View Details</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Package Categories -->
+    <section class="package-categories py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center mb-5">
+                    <h2 class="section-title">Package Categories</h2>
+                    <p class="section-subtitle">Find the perfect type of travel experience</p>
+                </div>
+            </div>
+            
+            <div class="row g-4">
+                <div class="col-lg-3 col-md-6">
+                    <div class="category-card text-center">
+                        <div class="category-icon mb-3">
+                            <i class="fas fa-crown"></i>
+                        </div>
+                        <h5>Luxury Packages</h5>
+                        <p>Premium travel experiences with exclusive accommodations and personalized service.</p>
+                        <ul class="list-unstyled">
+                            <li><i class="fas fa-check text-success me-2"></i>5-star hotels</li>
+                            <li><i class="fas fa-check text-success me-2"></i>Private guides</li>
+                            <li><i class="fas fa-check text-success me-2"></i>VIP experiences</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="col-lg-3 col-md-6">
+                    <div class="category-card text-center">
+                        <div class="category-icon mb-3">
+                            <i class="fas fa-mountain"></i>
+                        </div>
+                        <h5>Adventure Packages</h5>
+                        <p>Thrilling outdoor experiences and adrenaline-pumping activities for adventure seekers.</p>
+                        <ul class="list-unstyled">
+                            <li><i class="fas fa-check text-success me-2"></i>Hiking & trekking</li>
+                            <li><i class="fas fa-check text-success me-2"></i>Water sports</li>
+                            <li><i class="fas fa-check text-success me-2"></i>Wildlife safaris</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="col-lg-3 col-md-6">
+                    <div class="category-card text-center">
+                        <div class="category-icon mb-3">
+                            <i class="fas fa-globe"></i>
+                        </div>
+                        <h5>Cultural Packages</h5>
+                        <p>Immerse yourself in local traditions, history, and authentic cultural experiences.</p>
+                        <ul class="list-unstyled">
+                            <li><i class="fas fa-check text-success me-2"></i>Local experiences</li>
+                            <li><i class="fas fa-check text-success me-2"></i>Historical tours</li>
+                            <li><i class="fas fa-check text-success me-2"></i>Traditional cuisine</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="col-lg-3 col-md-6">
+                    <div class="category-card text-center">
+                        <div class="category-icon mb-3">
+                            <i class="fas fa-umbrella-beach"></i>
+                        </div>
+                        <h5>Beach Packages</h5>
+                        <p>Relaxing beach getaways with pristine shores, water activities, and tropical vibes.</p>
+                        <ul class="list-unstyled">
+                            <li><i class="fas fa-check text-success me-2"></i>Beachfront resorts</li>
+                            <li><i class="fas fa-check text-success me-2"></i>Water activities</li>
+                            <li><i class="fas fa-check text-success me-2"></i>Sunset cruises</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="cta-section py-5 bg-primary text-white">
+        <div class="container">
+            <div class="row justify-content-center text-center">
+                <div class="col-lg-8">
+                    <h2>Ready to Book Your Dream Vacation?</h2>
+                    <p class="mb-4">Let our travel experts help you choose the perfect package for your next adventure.</p>
+                    <a href="contact.html" class="btn btn-light btn-lg">
+                        <i class="fas fa-phone"></i> Get Expert Advice
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <div id="footer-placeholder"></div>
+
+    <!-- Chatbot -->
+    <div id="chatbot-placeholder"></div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Custom JS -->
+    <script src="../assets/js/main.js"></script>
+    
+    <!-- Page Specific JS -->
+    <script>
+        // Load components
+        document.addEventListener('DOMContentLoaded', function() {
+            // Load header
+            fetch('../components/header.html')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('header-placeholder').innerHTML = data;
+                });
+            
+            // Load footer
+            fetch('../components/footer.html')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('footer-placeholder').innerHTML = data;
+                });
+            
+            // Load chatbot
+            fetch('../components/chatbot.html')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('chatbot-placeholder').innerHTML = data;
+                });
+        });
+
+        // Load package results
+        async function loadPackageResults() {
+            try {
+                const response = await fetch('../data/dummy.json');
+                const data = await response.json();
+                const container = document.getElementById('packagesContainer');
+                
+                container.innerHTML = data.packages.map(package => `
+                    <div class="col-lg-4 col-md-6 mb-4">
+                        <div class="package-card filter-item" data-category="${package.category}">
+                            <img src="${package.image}" alt="${package.name}" class="package-image">
+                            <div class="package-content">
+                                <div class="package-header">
+                                    <h5>${package.name}</h5>
+                                    <span class="badge bg-primary">${package.category}</span>
+                                </div>
+                                <p class="package-description">${package.description}</p>
+                                <div class="package-meta">
+                                    <span class="duration"><i class="fas fa-clock me-1"></i>${package.duration}</span>
+                                    <span class="price">From $${package.price}</span>
+                                </div>
+                                <div class="package-inclusions">
+                                    <h6>Inclusions:</h6>
+                                    <ul class="list-unstyled">
+                                        ${package.inclusions.map(inclusion => `<li><i class="fas fa-check text-success me-2"></i>${inclusion}</li>`).join('')}
+                                    </ul>
+                                </div>
+                                <button class="btn btn-primary w-100">View Details</button>
+                            </div>
+                        </div>
+                    </div>
+                `).join('');
+                
+            } catch (error) {
+                console.error('Error loading packages:', error);
+                document.getElementById('packagesContainer').innerHTML = `
+                    <div class="col-12 text-center">
+                        <p>Unable to load packages. Please try again later.</p>
+                    </div>
+                `;
+            }
+        }
+
+        // Initialize page
+        document.addEventListener('DOMContentLoaded', function() {
+            loadPackageResults();
+        });
+    </script>
+
+    <!-- Additional Styles -->
+    <style>
+        .page-header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+        }
+
+        .search-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 1rem;
+            box-shadow: var(--shadow-md);
+        }
+
+        .filter-buttons {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .filter-btn {
+            border-radius: 2rem;
+            padding: 0.5rem 1.5rem;
+        }
+
+        .filter-btn.active {
+            background: var(--primary-color);
+            border-color: var(--primary-color);
+            color: white;
+        }
+
+        .package-card {
+            background: white;
+            border-radius: 1rem;
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+            overflow: hidden;
+            height: 100%;
+        }
+
+        .package-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .package-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .package-content {
+            padding: 1.5rem;
+        }
+
+        .package-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 1rem;
+        }
+
+        .package-description {
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+        }
+
+        .package-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .duration {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .price {
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+
+        .package-inclusions h6 {
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+        }
+
+        .package-inclusions ul li {
+            font-size: 0.8rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .featured-package-card {
+            position: relative;
+            border-radius: 1rem;
+            overflow: hidden;
+            height: 400px;
+        }
+
+        .featured-package-card .package-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .package-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(transparent, rgba(0,0,0,0.8));
+            display: flex;
+            align-items: flex-end;
+        }
+
+        .package-overlay .package-content {
+            color: white;
+            padding: 2rem;
+        }
+
+        .package-overlay .package-description {
+            color: rgba(255,255,255,0.8);
+        }
+
+        .category-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 1rem;
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+            height: 100%;
+        }
+
+        .category-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .category-icon {
+            font-size: 3rem;
+            color: var(--primary-color);
+        }
+
+        .category-card ul li {
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+        }
+
+        /* Dark mode adjustments */
+        [data-theme="dark"] .search-card,
+        [data-theme="dark"] .package-card,
+        [data-theme="dark"] .category-card {
+            background: #374151;
+            border: 1px solid #4b5563;
+        }
+
+        [data-theme="dark"] .bg-light {
+            background-color: #1f2937 !important;
+        }
+
+        [data-theme="dark"] .package-description {
+            color: #9ca3af;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .filter-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .featured-package-card {
+                height: 300px;
+            }
+        }
+    </style>
+</body>
+</html> 
