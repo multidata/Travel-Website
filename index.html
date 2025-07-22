@@ -1,0 +1,689 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Travel Website</title>
+  <!-- Google Fonts: Montserrat -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+  <!-- Bootstrap 5 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Bootstrap Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Montserrat', Arial, sans-serif;
+      background: #fff;
+      color: #222;
+    }
+    .navbar {
+      background: #fff;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+      font-family: 'Montserrat', Arial, sans-serif;
+    }
+    .nav-link {
+      color: #222 !important;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      transition: color 0.2s;
+      font-size: 1.05rem;
+    }
+    .nav-link:hover, .nav-link.active {
+      color: #fbbf24 !important;
+    }
+    .hero {
+      background: linear-gradient(rgba(0, 41, 102, 0.7), rgba(0, 41, 102, 0.7)), url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1200&q=80') center/cover no-repeat;
+      min-height: 70vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      position: relative;
+    }
+    .hero-content h1 {
+      font-size: 3.2rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      color: #fbbf24;
+      text-shadow: 2px 2px 8px rgba(0,0,0,0.18);
+    }
+    .hero-content h2 {
+      font-size: 2rem;
+      font-weight: 600;
+      color: #fff;
+      margin-bottom: 2rem;
+      text-shadow: 1px 1px 6px rgba(0,0,0,0.15);
+    }
+    .hero-content .btn-warning {
+      background: #fbbf24;
+      border: none;
+      color: #002966;
+      font-weight: 700;
+      padding: 0.75rem 2.5rem;
+      font-size: 1.1rem;
+      border-radius: 2rem;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+      transition: background 0.2s, color 0.2s;
+    }
+    .hero-content .btn-warning:hover {
+      background: #ffd700;
+      color: #002966;
+    }
+    .hero-content .btn-outline-light {
+      border-radius: 2rem;
+      font-weight: 700;
+      padding: 0.75rem 2.5rem;
+      font-size: 1.1rem;
+      border: 2px solid #fff;
+      color: #fff;
+      background: transparent;
+      margin-left: 0.5rem;
+      transition: background 0.2s, color 0.2s;
+    }
+    .hero-content .btn-outline-light:hover {
+      background: #fff;
+      color: #002966;
+    }
+    .quick-info {
+      background: #f4f8fb;
+      border-radius: 1.5rem;
+      box-shadow: 0 2px 12px rgba(0,41,102,0.04);
+      margin-top: -3rem;
+      position: relative;
+      z-index: 2;
+      padding: 2rem 0.5rem;
+    }
+    .quick-info .bi {
+      color: #fbbf24;
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+    }
+    .quick-info h5 {
+      font-weight: 700;
+      color: #002966;
+      font-size: 1.1rem;
+    }
+    .section-title {
+      color: #002966;
+      font-weight: 700;
+      font-size: 2.2rem;
+      margin-bottom: 2rem;
+      letter-spacing: 0.5px;
+      text-align: center;
+    }
+    .card {
+      border: none;
+      border-radius: 1.25rem;
+      box-shadow: 0 2px 16px rgba(0,41,102,0.07);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .card:hover {
+      transform: translateY(-8px) scale(1.03);
+      box-shadow: 0 8px 32px rgba(251,191,36,0.13);
+      z-index: 2;
+    }
+    .card-title {
+      color: #002966;
+      font-weight: 700;
+      font-size: 1.1rem;
+    }
+    .btn-primary, .btn-primary:focus {
+      background: #002966;
+      border: none;
+      color: #fff;
+      font-weight: 600;
+      border-radius: 2rem;
+      transition: background 0.2s;
+    }
+    .btn-primary:hover {
+      background: #fbbf24;
+      color: #002966;
+    }
+    .btn-outline-primary {
+      border-radius: 2rem;
+      color: #002966;
+      border: 2px solid #002966;
+      font-weight: 600;
+      transition: background 0.2s, color 0.2s;
+    }
+    .btn-outline-primary:hover {
+      background: #002966;
+      color: #fff;
+    }
+    .gallery-img {
+      border-radius: 1rem;
+      transition: transform 0.4s;
+      box-shadow: 0 2px 12px rgba(0,41,102,0.07);
+    }
+    .gallery-img:hover {
+      transform: scale(1.12) rotate(-2deg);
+      box-shadow: 0 8px 32px rgba(251,191,36,0.13);
+    }
+    .footer {
+      background: #002966;
+      color: #fff;
+      border-radius: 2rem 2rem 0 0;
+      margin-top: 4rem;
+      padding-top: 3rem;
+      padding-bottom: 1.5rem;
+    }
+    .footer a {
+      color: #fbbf24;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .footer a:hover {
+      color: #fff;
+    }
+    .footer h5, .footer h6 {
+      color: #fbbf24;
+      font-weight: 700;
+    }
+    .footer .bi {
+      color: #fbbf24;
+      font-size: 1.5rem;
+      margin-right: 0.5rem;
+    }
+    .card-img-top {
+      height: 200px;
+      object-fit: cover;
+      border-top-left-radius: 1.25rem;
+      border-top-right-radius: 1.25rem;
+    }
+    @media (max-width: 767.98px) {
+      .hero-content h1 {
+        font-size: 2rem;
+      }
+      .section-title {
+        font-size: 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation Bar -->
+  <nav class="navbar navbar-expand-lg navbar-light py-3 shadow-sm">
+    <div class="container">
+      <a class="navbar-brand fw-bold" href="index.html"><i class="bi bi-globe2 me-2"></i>TravelSite</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+          <li class="nav-item"><a class="nav-link" href="pages/about.html" target="_blank" rel="noopener">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="pages/buses.html" target="_blank" rel="noopener">Buses</a></li>
+          <li class="nav-item"><a class="nav-link" href="pages/contact.html" target="_blank" rel="noopener">Contact</a></li>
+          <li class="nav-item"><a class="nav-link" href="pages/destinations.html" target="_blank" rel="noopener">Destinations</a></li>
+          <li class="nav-item"><a class="nav-link" href="pages/faq.html" target="_blank" rel="noopener">FAQ</a></li>
+          <li class="nav-item"><a class="nav-link" href="pages/flights.html" target="_blank" rel="noopener">Flights</a></li>
+          <li class="nav-item"><a class="nav-link" href="pages/hotels.html" target="_blank" rel="noopener">Hotels</a></li>
+          <li class="nav-item"><a class="nav-link" href="pages/packages.html" target="_blank" rel="noopener">Packages</a></li>
+          <li class="nav-item"><a class="nav-link" href="pages/trains.html" target="_blank" rel="noopener">Trains</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero d-flex align-items-center" style="min-height: 70vh; background: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1200&q=80') center/cover no-repeat;">
+    <div class="container text-center text-white position-relative" style="z-index:2;">
+      <h1 class="display-3 fw-bold mb-3">Shangri La</h1>
+      <h2 class="mb-4">The hidden World</h2>
+      <a href="#upcoming-tours" class="btn btn-warning btn-lg me-2">Upcoming Tours</a>
+      <a href="#contact" class="btn btn-outline-light btn-lg">Call Now</a>
+    </div>
+    <div style="position:absolute;top:0;left:0;width:100%;height:100%;background:rgba(13,110,253,0.45);z-index:1;"></div>
+  </section>
+
+  <!-- Quick Info Section -->
+  <section class="container py-5">
+    <div class="row text-center g-4">
+      <div class="col-6 col-md-3">
+        <i class="bi bi-geo-alt-fill display-5 text-primary mb-2"></i>
+        <h5 class="fw-bold">50+ Destinations</h5>
+      </div>
+      <div class="col-6 col-md-3">
+        <i class="bi bi-currency-dollar display-5 text-primary mb-2"></i>
+        <h5 class="fw-bold">Best Price Guaranteed</h5>
+      </div>
+      <div class="col-6 col-md-3">
+        <i class="bi bi-tree-fill display-5 text-primary mb-2"></i>
+        <h5 class="fw-bold">Eco Friendly Tourism</h5>
+      </div>
+      <div class="col-6 col-md-3">
+        <i class="bi bi-lightning-charge-fill display-5 text-primary mb-2"></i>
+        <h5 class="fw-bold">Super Fast Booking</h5>
+      </div>
+    </div>
+  </section>
+
+  <!-- Company Intro Section -->
+  <section class="container py-5">
+    <div class="row align-items-center">
+      <div class="col-md-7">
+        <h2 class="fw-bold mb-3">Pakistan’s Leading Tourism Company</h2>
+        <p class="lead">Discover breathtaking and amazing Pakistan with one of the best Travel and Tourism Companies. We offer valued touristy plans with complete travel services in affordable tour packages from Lahore, Islamabad, and Karachi. Our tour managers and guides organize thrilling and audacious journeys to bring unforgettable holidays. Pack your bags and travel with us to turn your travel dreams into reality.</p>
+      </div>
+      <div class="col-md-5 text-center">
+        <img src="https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=400&q=80" class="img-fluid rounded shadow" alt="Pakistan Tourism">
+      </div>
+    </div>
+  </section>
+
+  <!-- Upcoming Tours Section -->
+  <section id="upcoming-tours" class="container py-5">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+      <h2 class="fw-bold mb-0">Upcoming Tours</h2>
+      <a href="#" class="btn btn-outline-primary btn-sm">View All Upcoming Packages</a>
+    </div>
+    <div class="row g-4">
+      <div class="col-12 col-md-6 col-lg-3">
+        <div class="card h-100 shadow tour-card">
+          <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=400&q=80" class="card-img-top" alt="Skardu">
+          <div class="card-body">
+            <h5 class="card-title">Autumn Tour to Skardu, Deosai Plains & Khaplu</h5>
+            <p class="card-text">8 Days (7 Nights)</p>
+            <div class="fw-bold text-primary mb-2">From Rs24,500</div>
+            <a href="#" class="btn btn-primary w-100">Book Now</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-12 col-md-6 col-lg-3">
+        <div class="card h-100 shadow tour-card">
+          <img src="https://images.unsplash.com/photo-1465156799763-2c087c332922?auto=format&fit=crop&w=400&q=80" class="card-img-top" alt="Kalash & Chitral">
+          <div class="card-body">
+            <h5 class="card-title">4 Days Trip to Kalash & Chitral Valley</h5>
+            <p class="card-text">4 Days (3 Nights)</p>
+            <div class="fw-bold text-primary mb-2">From Rs14,500</div>
+            <a href="#" class="btn btn-primary w-100">Book Now</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-12 col-md-6 col-lg-3">
+        <div class="card h-100 shadow tour-card">
+          <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=400&q=80" class="card-img-top" alt="Murree, Patriata & Galyat">
+          <div class="card-body">
+            <h5 class="card-title">2 Days Trip to Murree, Patriata & Galyat</h5>
+            <p class="card-text">2 Days (1 Night)</p>
+            <div class="fw-bold text-primary mb-2">From Rs8,500</div>
+            <a href="#" class="btn btn-primary w-100">Book Now</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-12 col-md-6 col-lg-3">
+        <div class="card h-100 shadow tour-card">
+          <img src="https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=400&q=80" class="card-img-top" alt="Fairy Meadows">
+          <div class="card-body">
+            <h5 class="card-title">5 Days Trip To Fairy Meadows</h5>
+            <p class="card-text">5 Days (4 Nights)</p>
+            <div class="fw-bold text-primary mb-2">From Rs24,500</div>
+            <a href="#" class="btn btn-primary w-100">Book Now</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Popular Tour Packages Section -->
+  <section class="container py-5">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+      <h2 class="fw-bold mb-0">Popular Tour Packages</h2>
+      <a href="#" class="btn btn-outline-primary btn-sm">View All Packages</a>
+    </div>
+    <div class="row g-4">
+      <div class="col-12 col-md-6 col-lg-3">
+        <div class="card h-100 shadow package-card">
+          <img src="https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?auto=format&fit=crop&w=400&q=80" class="card-img-top" alt="Spinkhor Lake Kalam">
+          <div class="card-body">
+            <h5 class="card-title">3 Days Trekking Trip to Spinkhor Lake Kalam</h5>
+            <p class="card-text">3 Days (2 Nights)</p>
+            <div class="fw-bold text-primary mb-2">From Rs17,500</div>
+            <a href="#" class="btn btn-primary w-100">Book Now</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-12 col-md-6 col-lg-3">
+        <div class="card h-100 shadow package-card">
+          <img src="https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=400&q=80" class="card-img-top" alt="Dudipatsar Lake Naran">
+          <div class="card-body">
+            <h5 class="card-title">4 Days Trip To Dudipatsar Lake Naran</h5>
+            <p class="card-text">4 Days (3 Nights)</p>
+            <div class="fw-bold text-primary mb-2">From Rs21,500</div>
+            <a href="#" class="btn btn-primary w-100">Book Now</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-12 col-md-6 col-lg-3">
+        <div class="card h-100 shadow package-card">
+          <img src="https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=400&q=80" class="card-img-top" alt="Kumrat Valley and Katora Lake">
+          <div class="card-body">
+            <h5 class="card-title">4 Days Trip to Kumrat Valley and Katora Lake</h5>
+            <p class="card-text">4 Days (3 Nights)</p>
+            <div class="fw-bold text-primary mb-2">From Rs21,500</div>
+            <a href="#" class="btn btn-primary w-100">Book Now</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-12 col-md-6 col-lg-3">
+        <div class="card h-100 shadow package-card">
+          <img src="https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?auto=format&fit=crop&w=400&q=80" class="card-img-top" alt="Spinkhor Lake Kalam">
+          <div class="card-body">
+            <h5 class="card-title">3 Days Trekking Trip to Spinkhor Lake Kalam</h5>
+            <p class="card-text">3 Days (2 Nights)</p>
+            <div class="fw-bold text-primary mb-2">From Rs17,500</div>
+            <a href="#" class="btn btn-primary w-100">Book Now</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Honeymoon Tour Packages Section -->
+  <section class="container py-5">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+      <h2 class="fw-bold mb-0">Honeymoon Tour Packages</h2>
+      <a href="#" class="btn btn-outline-primary btn-sm">View All Packages</a>
+    </div>
+    <div class="row g-4">
+      <div class="col-12 col-md-6 col-lg-3">
+        <div class="card h-100 shadow honeymoon-card">
+          <img src="https://images.unsplash.com/photo-1465156799763-2c087c332922?auto=format&fit=crop&w=400&q=80" class="card-img-top" alt="Shogran Valley">
+          <div class="card-body">
+            <h5 class="card-title">3 Days Honeymoon Tour to Shogran Valley</h5>
+            <p class="card-text">3 Days (3 Nights)</p>
+            <div class="fw-bold text-primary mb-2">From Rs85,000</div>
+            <a href="#" class="btn btn-primary w-100">Book Now</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-12 col-md-6 col-lg-3">
+        <div class="card h-100 shadow honeymoon-card">
+          <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=400&q=80" class="card-img-top" alt="Swat, Kalam & Mahodand Lake">
+          <div class="card-body">
+            <h5 class="card-title">3 Days Honeymoon Tour to Swat, Kalam & Mahodand Lake</h5>
+            <p class="card-text">3 Days (2 Nights)</p>
+            <div class="fw-bold text-primary mb-2">From Rs95,000</div>
+            <a href="#" class="btn btn-primary w-100">Book Now</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-12 col-md-6 col-lg-3">
+        <div class="card h-100 shadow honeymoon-card">
+          <img src="https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=400&q=80" class="card-img-top" alt="Skardu, Shangrila, Khaplu and Shigar Valley">
+          <div class="card-body">
+            <h5 class="card-title">8 Days Honeymoon Tour to Skardu, Shangrila, Khaplu and Shigar Valley (Luxury)</h5>
+            <p class="card-text">8 Days (7 Nights)</p>
+            <div class="fw-bold text-primary mb-2">From Rs190,000</div>
+            <a href="#" class="btn btn-primary w-100">Book Now</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-12 col-md-6 col-lg-3">
+        <div class="card h-100 shadow honeymoon-card">
+          <img src="https://images.unsplash.com/photo-1465156799763-2c087c332922?auto=format&fit=crop&w=400&q=80" class="card-img-top" alt="Shogran Valley">
+          <div class="card-body">
+            <h5 class="card-title">3 Days Honeymoon Tour to Shogran Valley</h5>
+            <p class="card-text">3 Days (3 Nights)</p>
+            <div class="fw-bold text-primary mb-2">From Rs85,000</div>
+            <a href="#" class="btn btn-primary w-100">Book Now</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Family Tour Packages Section -->
+  <section class="container py-5">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+      <h2 class="fw-bold mb-0">Family Tour Packages</h2>
+      <a href="#" class="btn btn-outline-primary btn-sm">View All Packages</a>
+    </div>
+    <div class="row g-4">
+      <div class="col-12 col-md-6 col-lg-3">
+        <div class="card h-100 shadow family-card">
+          <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=400&q=80" class="card-img-top" alt="Family Tour">
+          <div class="card-body">
+            <h5 class="card-title">Family Tour to Hunza Valley</h5>
+            <p class="card-text">5 Days (4 Nights)</p>
+            <div class="fw-bold text-primary mb-2">From Rs18,500</div>
+            <a href="#" class="btn btn-primary w-100">Book Now</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-12 col-md-6 col-lg-3">
+        <div class="card h-100 shadow family-card">
+          <img src="https://images.unsplash.com/photo-1465156799763-2c087c332922?auto=format&fit=crop&w=400&q=80" class="card-img-top" alt="Family Tour">
+          <div class="card-body">
+            <h5 class="card-title">Family Tour to Fairy Meadows</h5>
+            <p class="card-text">5 Days (4 Nights)</p>
+            <div class="fw-bold text-primary mb-2">From Rs24,500</div>
+            <a href="#" class="btn btn-primary w-100">Book Now</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-12 col-md-6 col-lg-3">
+        <div class="card h-100 shadow family-card">
+          <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=400&q=80" class="card-img-top" alt="Family Tour">
+          <div class="card-body">
+            <h5 class="card-title">Family Tour to Neelum Valley</h5>
+            <p class="card-text">4 Days (3 Nights)</p>
+            <div class="fw-bold text-primary mb-2">From Rs14,500</div>
+            <a href="#" class="btn btn-primary w-100">Book Now</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-12 col-md-6 col-lg-3">
+        <div class="card h-100 shadow family-card">
+          <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=400&q=80" class="card-img-top" alt="Family Tour">
+          <div class="card-body">
+            <h5 class="card-title">Family Tour to Hunza Valley</h5>
+            <p class="card-text">5 Days (4 Nights)</p>
+            <div class="fw-bold text-primary mb-2">From Rs18,500</div>
+            <a href="#" class="btn btn-primary w-100">Book Now</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why Book With Us Section -->
+  <section class="container py-5">
+    <h2 class="fw-bold text-center mb-4">Why Book With Us?</h2>
+    <div class="row text-center g-4">
+      <div class="col-6 col-md-3">
+        <i class="bi bi-people-fill display-5 text-primary mb-2"></i>
+        <h6 class="fw-bold">Caring Staff</h6>
+      </div>
+      <div class="col-6 col-md-3">
+        <i class="bi bi-shield-lock-fill display-5 text-primary mb-2"></i>
+        <h6 class="fw-bold">Secure Payment</h6>
+      </div>
+      <div class="col-6 col-md-3">
+        <i class="bi bi-sliders display-5 text-primary mb-2"></i>
+        <h6 class="fw-bold">Tour Customization</h6>
+      </div>
+      <div class="col-6 col-md-3">
+        <i class="bi bi-tag-fill display-5 text-primary mb-2"></i>
+        <h6 class="fw-bold">Discounted Price</h6>
+      </div>
+    </div>
+  </section>
+
+  <!-- Gallery Section -->
+  <section class="container py-5">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+      <h2 class="fw-bold mb-0">Our Recent Tours Gallery</h2>
+      <a href="#" class="btn btn-outline-primary btn-sm">View All Photos</a>
+    </div>
+    <div class="row g-3">
+      <div class="col-6 col-md-3">
+        <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=400&q=80" class="img-fluid rounded gallery-img" alt="Gallery 1">
+      </div>
+      <div class="col-6 col-md-3">
+        <img src="https://images.unsplash.com/photo-1465156799763-2c087c332922?auto=format&fit=crop&w=400&q=80" class="img-fluid rounded gallery-img" alt="Gallery 2">
+      </div>
+      <div class="col-6 col-md-3">
+        <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=400&q=80" class="img-fluid rounded gallery-img" alt="Gallery 3">
+      </div>
+      <div class="col-6 col-md-3">
+        <img src="https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=400&q=80" class="img-fluid rounded gallery-img" alt="Gallery 4">
+      </div>
+      <div class="col-6 col-md-3">
+        <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=400&q=80" class="img-fluid rounded gallery-img" alt="Gallery 5">
+      </div>
+      <div class="col-6 col-md-3">
+        <img src="https://images.unsplash.com/photo-1465156799763-2c087c332922?auto=format&fit=crop&w=400&q=80" class="img-fluid rounded gallery-img" alt="Gallery 6">
+      </div>
+      <div class="col-6 col-md-3">
+        <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=400&q=80" class="img-fluid rounded gallery-img" alt="Gallery 7">
+      </div>
+      <div class="col-6 col-md-3">
+        <img src="https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=400&q=80" class="img-fluid rounded gallery-img" alt="Gallery 8">
+      </div>
+      <div class="col-6 col-md-3">
+        <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=400&q=80" class="img-fluid rounded gallery-img" alt="Gallery 9">
+      </div>
+      <div class="col-6 col-md-3">
+        <img src="https://images.unsplash.com/photo-1465156799763-2c087c332922?auto=format&fit=crop&w=400&q=80" class="img-fluid rounded gallery-img" alt="Gallery 10">
+      </div>
+      <div class="col-6 col-md-3">
+        <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=400&q=80" class="img-fluid rounded gallery-img" alt="Gallery 11">
+      </div>
+      <div class="col-6 col-md-3">
+        <img src="https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=400&q=80" class="img-fluid rounded gallery-img" alt="Gallery 12">
+      </div>
+    </div>
+  </section>
+
+  <!-- Book a Transport Section -->
+  <section class="container py-5">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+      <h2 class="fw-bold mb-0">Book a Transport</h2>
+      <a href="#" class="btn btn-outline-primary btn-sm">View All Vehicles</a>
+    </div>
+    <div class="row g-4">
+      <div class="col-12 col-md-6 col-lg-3">
+        <div class="card h-100 shadow transport-card">
+          <img src="https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=400&q=80" class="card-img-top" alt="Toyota Prado">
+          <div class="card-body">
+            <h5 class="card-title">Toyota Prado</h5>
+            <p class="card-text">(4-6) Person</p>
+            <div class="fw-bold text-primary mb-2">PKR (12000 - 15000 / Day) with driver</div>
+            <a href="#" class="btn btn-primary w-100">Book Now</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-12 col-md-6 col-lg-3">
+        <div class="card h-100 shadow transport-card">
+          <img src="https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=400&q=80" class="card-img-top" alt="Toyota Corolla">
+          <div class="card-body">
+            <h5 class="card-title">Toyota Corolla</h5>
+            <p class="card-text">(3-4) Person</p>
+            <div class="fw-bold text-primary mb-2">PKR (4500 - 5000 / Day) with driver</div>
+            <a href="#" class="btn btn-primary w-100">Book Now</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-12 col-md-6 col-lg-3">
+        <div class="card h-100 shadow transport-card">
+          <img src="https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?auto=format&fit=crop&w=400&q=80" class="card-img-top" alt="Suzuki Cultus">
+          <div class="card-body">
+            <h5 class="card-title">Suzuki Cultus</h5>
+            <p class="card-text">(3-4) Person</p>
+            <div class="fw-bold text-primary mb-2">PKR (3500 / Day) with driver</div>
+            <a href="#" class="btn btn-primary w-100">Book Now</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-12 col-md-6 col-lg-3">
+        <div class="card h-100 shadow transport-card">
+          <img src="https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=400&q=80" class="card-img-top" alt="Toyota Prado">
+          <div class="card-body">
+            <h5 class="card-title">Toyota Prado</h5>
+            <p class="card-text">(4-6) Person</p>
+            <div class="fw-bold text-primary mb-2">PKR (12000 - 15000 / Day) with driver</div>
+            <a href="#" class="btn btn-primary w-100">Book Now</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Info Section -->
+  <section id="contact" class="container py-5">
+    <div class="row align-items-center">
+      <div class="col-md-6 mb-4 mb-md-0">
+        <h2 class="fw-bold mb-3">Contact Info</h2>
+        <ul class="list-unstyled">
+          <li><strong>Pakistan Address:</strong> 8-B, Iqbal Avenue Phase 1, Nazaria-e-Pakistan Rd, Lahore.</li>
+          <li><strong>Phone:</strong> +92 321 410 6223</li>
+          <li><strong>Tel:</strong> +92 423 5183 937</li>
+          <li><strong>Email:</strong> info@pakistantravelplaces.com</li>
+        </ul>
+      </div>
+      <div class="col-md-6 text-center">
+        <img src="https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=400&q=80" class="img-fluid rounded shadow" alt="Contact">
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer Section -->
+  <footer class="bg-dark text-white pt-5 pb-3 mt-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-12 col-md-4 mb-3">
+          <h5>TravelSite</h5>
+          <p>Where your journey begins. Discover your next great place, find trips and know about the famous travel destinations of Pakistan. A travel and tourism company for city sightseeing, group and corporate tours, camping and hiking adventures, family and solo trips, and much more for a perfect travel experience!</p>
+        </div>
+        <div class="col-6 col-md-2 mb-3">
+          <h6>Quick Links</h6>
+          <ul class="list-unstyled">
+            <li><a href="#" class="text-white-50">Home</a></li>
+            <li><a href="#" class="text-white-50">Tour Packages</a></li>
+            <li><a href="#" class="text-white-50">Destinations</a></li>
+            <li><a href="#" class="text-white-50">Book a Transport</a></li>
+          </ul>
+        </div>
+        <div class="col-6 col-md-2 mb-3">
+          <h6>Support</h6>
+          <ul class="list-unstyled">
+            <li><a href="#" class="text-white-50">Contact</a></li>
+            <li><a href="#" class="text-white-50">Blog</a></li>
+            <li><a href="#" class="text-white-50">About Us</a></li>
+          </ul>
+        </div>
+        <div class="col-12 col-md-4 mb-3">
+          <h6>Follow Us</h6>
+          <a href="#" class="text-white-50 me-3"><i class="bi bi-facebook fs-4"></i></a>
+          <a href="#" class="text-white-50 me-3"><i class="bi bi-instagram fs-4"></i></a>
+          <a href="#" class="text-white-50 me-3"><i class="bi bi-whatsapp fs-4"></i></a>
+          <a href="#" class="text-white-50 me-3"><i class="bi bi-twitter fs-4"></i></a>
+        </div>
+      </div>
+      <div class="text-center mt-3">
+        <small>&copy; 2024 TravelSite. All rights reserved. All other trademarks and photos are the property of their respective owners.</small>
+      </div>
+    </div>
+  </footer>
+
+  <style>
+    .tour-card, .package-card, .honeymoon-card, .family-card, .transport-card {
+      transition: transform 0.2s, box-shadow 0.2s;
+      cursor: pointer;
+    }
+    .tour-card:hover, .package-card:hover, .honeymoon-card:hover, .family-card:hover, .transport-card:hover {
+      transform: translateY(-8px) scale(1.03);
+      box-shadow: 0 8px 24px rgba(13,110,253,0.12);
+      z-index: 2;
+    }
+    .gallery-img {
+      transition: transform 0.4s;
+    }
+    .gallery-img:hover {
+      transform: scale(1.12) rotate(-2deg);
+    }
+  </style>
+  <!-- Bootstrap 5 JS Bundle -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html> 
